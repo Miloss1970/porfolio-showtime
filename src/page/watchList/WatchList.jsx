@@ -8,11 +8,12 @@ import { useSelector } from "react-redux";
 function WatchList(props) {
   const { addedMovies } = useSelector((state) => state.watchListStore);
   const [movies, setMovies] = useState(addedMovies);
+  console.log(addedMovies);
   useEffect(() => {
     setMovies(addedMovies);
   }, [addedMovies]);
 
-return (
+  return (
     <div>
       <NavBar />
 
@@ -29,5 +30,6 @@ return (
       )}
     </div>
   );
+}
 
 export default WatchList;
