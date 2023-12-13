@@ -25,7 +25,7 @@ function AllHomeFilms(props) {
       .then((res) => setTrendingImages(res.data.results))
       .catch((err) => console.log(err));
 
-    HomePageService.getNowPlaying()
+    HomePageService.getNowPlaying(page)
       .then((res) => setNowPlayingImages(res.data.results))
       .catch((err) => console.log(err));
 
