@@ -36,7 +36,7 @@ function DetailMoviesRecommended({ movieRecommended }) {
                     alt="Recomended-img"
                     onClick={() => {
                       navigation(`/detailMovie/${img.id}`);
-                      location.reload();
+                      // location.reload();
                     }}
                   />
                 </SwiperSlide>
