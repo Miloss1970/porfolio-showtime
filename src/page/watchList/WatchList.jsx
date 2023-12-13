@@ -12,17 +12,22 @@ function WatchList(props) {
     setMovies(addedMovies);
   }, [addedMovies]);
 
-  return (
+return (
     <div>
       <NavBar />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[50px] p-[100px]">
-        {movies?.map((filmCard, i) => {
-          return <Card key={i} filmCard={filmCard} />;
-        })}
-      </div>
+      {addedMovies.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[50px] p-[100px]">
+          {movies?.map((filmCard, i) => {
+            return <Card key={i} filmCard={filmCard} />;
+          })}
+        </div>
+      ) : (
+        <div className="p-[100px] text-primary text-4xl">
+          WatchList is empty.
+        </div>
+      )}
     </div>
   );
-}
 
 export default WatchList;
