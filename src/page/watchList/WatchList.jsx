@@ -1,29 +1,28 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { useSelector } from "react-redux";
 import Card from "../../components/Card/Card";
 
-function WatchList(props) {
-  const { addedMovies } = useSelector((state) => state.languagesStore);
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-  let aaa = JSON.parse(localStorage.getItem("movie"));
+function WatchList(props) {
+  const { addedMovies } = useSelector((state) => state.watchListStore);
+  const [movies, setMovies] = useState(addedMovies);
+  useEffect(() => {
+    setMovies(addedMovies);
+  }, [addedMovies]);
 
   return (
     <div>
       <NavBar />
-      {addedMovies.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[50px] p-[100px]">
-          {aaa?.map((filmCard, i) => {
-            return <Card key={i} filmCard={filmCard} />;
-          })}
-        </div>
-      ) : (
-        <div className="text-primary text-[30px] p-[100px] font-bold">
-          WatchList is empty.
-        </div>
-      )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[50px] p-[100px]">
+        {movies?.map((filmCard, i) => {
+          return <Card key={i} filmCard={filmCard} />;
+        })}
+      </div>
     </div>
   );
 }
 
-export default WatchList;
+export default WatchList;
